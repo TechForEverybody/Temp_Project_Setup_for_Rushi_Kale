@@ -240,7 +240,7 @@ else{
 			<caption style="  
 			font-size: 1.5em;
   			margin: .5em 0 .75em;"
-			><b>Appoinments List</b></caption>
+			><b>Order List</b></caption>
 			<thead>
 				<tr style=" 
 				background-color: #f8f8f8;
@@ -351,7 +351,7 @@ if($result){
             padding: 30px 10px;
 
         ">
-            <h3>No Appoinments</h3>
+            <h3>No Orders</h3>
         </div>    
         ';
     }
