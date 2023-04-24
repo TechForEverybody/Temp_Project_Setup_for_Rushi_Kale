@@ -226,6 +226,142 @@ else{
     echo "error";
 }
 
+
+?>
+</table>
+<table style="  
+			border: 1px solid #ccc;
+  			border-collapse: collapse;
+  			margin-left: 4rem;
+			margin-bottom: 4rem;
+  			padding: 0;
+  			width: 70rem;
+  			table-layout: fixed;">
+			<caption style="  
+			font-size: 1.5em;
+  			margin: .5em 0 .75em;"
+			><b>Appoinments List</b></caption>
+			<thead>
+				<tr style=" 
+				background-color: #f8f8f8;
+  				border: 1px solid #ddd;
+  				padding: .35em;
+				">
+
+				<th scope="col" style="  
+				padding: .625em;
+  				text-align: center;
+				font-size: .85em;
+  				letter-spacing: .1em;
+  				text-transform: uppercase;
+				">Order ID</th>
+				<th scope="col" style="  
+				padding: .625em;
+  				text-align: center;
+				font-size: .85em;
+  				letter-spacing: .1em;
+  				text-transform: uppercase;
+				">Product ID</th>
+
+				<th scope="col" style="  
+				padding: .625em;
+  				text-align: center;
+				font-size: .85em;
+  				letter-spacing: .1em;
+  				text-transform: uppercase;
+				">Product Name</th>
+
+				<th scope="col" style="  
+				padding: .625em;
+  				text-align: center;
+				font-size: .85em;
+  				letter-spacing: .1em;
+  				text-transform: uppercase;
+				">Price</th>
+
+				<th scope="col" style="  
+				padding: .625em;
+  				text-align: center;
+				font-size: .85em;
+  				letter-spacing: .1em;
+  				text-transform: uppercase;">Ordered Date </th>
+
+				<th scope="col"style="  
+				padding: .625em;
+  				text-align: center;
+				font-size: .85em;
+  				letter-spacing: .1em;
+  				text-transform: uppercase;
+				">Delivery Status</th>
+				<th scope="col"style="  
+				padding: .625em;
+  				text-align: center;
+				font-size: .85em;
+  				letter-spacing: .1em;
+  				text-transform: uppercase;
+				">Payment Mode</th>
+			</thead>
+			<?php
+
+
+$sql = "SELECT * FROM `orders` WHERE `email` = '".$_SESSION['email']."'";
+$result = mysqli_query($conn, $sql);
+if($result){
+    if(mysqli_num_rows($result) > 0){
+        while($row = mysqli_fetch_assoc($result)){
+            echo'
+            <tbody>
+                <tr>
+                    <td data-label="name" style="  
+                        padding: .625em;
+                        text-align: center;">'. $row['id'].'</td>
+                    <td data-label="name" style="  
+                        padding: .625em;
+                        text-align: center;">'. $row['product_id'].'</td>
+                    <td data-label="Email" style="  
+                        padding: .625em;
+                        text-align: center;">'. $row['product_name'].'</td>
+                    <td data-label="Phone No" style="  
+                        padding: .625em;
+                        text-align: center;">'. $row['price'].'</td>
+                    <td data-label="Way to reach "style="  
+                        padding: .625em;
+                        text-align: center;">'. $row['order_date'].'</td>
+                    <td data-label="Days"style="  
+                        padding: .625em;
+                        text-align: center;">
+                        '. ($row['delivery_status']=="NO"?"Not Delivered":"Delivered").'
+                    </td>
+                    <td data-label="Days"style="  
+                        padding: .625em;
+                        text-align: center;">
+                        CASH ON DELIVERY
+                    </td>
+                </tr>
+            </tbody>';
+        }
+    }
+    else{
+        echo '
+        <div class="appoinment" style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            fosnt-size: 20px;
+            padding: 30px 10px;
+
+        ">
+            <h3>No Appoinments</h3>
+        </div>    
+        ';
+    }
+}
+else{
+    echo "error";
+}
+
+
+
 mysqli_close($conn);
 
 ?>

@@ -29,6 +29,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+  <?php
+  if(isset($_GET['success'])){
+    echo "<script>alert('".$_GET['success']."')</script>";
+  }
+?>
   <div class="header">
     <div class="container">
       <div class="navbar">
@@ -43,7 +48,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
               <li><a href="login1.php"><?php echo $link_text; ?></a></li>
             <?php } ?>
             
-            <li><a href="#">Contact</a></li>
+            <li><a href="contact_page.php">Contact</a></li>
             <li><a href="apointment.php">Appointment</a></li>
           </ul>
         </nav>
