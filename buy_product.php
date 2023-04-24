@@ -18,5 +18,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
         echo "Product not added to cart";
         header("Location: index.php");
     }
+}else{
+    header("Location: login1.php");
 }
 ?>
